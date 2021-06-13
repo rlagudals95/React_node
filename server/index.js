@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose"); //npm install mongoose --save
 const { User } = require("./models/User"); //회원가입시 필요한 유저 모델형식 가져온다
+const config = require('./config/key');
 
 // bodyParser에 옵션을 줘야한다
 // 클라리언트에서 오는 정보를 일기 위함
@@ -17,7 +18,8 @@ app.use(bodyParser.json());
 mongoose
   .connect(
     // mongoDB에서 만든 데이터베이스에 연결
-    "mongodb+srv://dbfudgudals:tkdel12@@!!@youtubeclone.rqkg7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    // 그런데 mongoDB 아이디와 비밀번호가 github에 그대로 들어가면 위험하다 따로 파일로 빼줘서 gitignore로 설정해주자
+    config.mongoURI,
     {
       useNewUrlParser: true, //에러가 안뜨게 써준다
       useUnifiedTopology: true,
@@ -36,7 +38,7 @@ mongoose
 app.get("/", (req, res) => {
   // 콜백함수로 req와 res
   //터미널에 node index.js > localhost:5000으로 접속하면 "hello world"가 보인다
-  res.send("hello world");
+  res.send("hello world!!");
 });
 
 // 회원가입시 필요한 정보들을 client에서 받으면
