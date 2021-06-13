@@ -1,18 +1,3 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
+06/13 회원가입 모델을 완성하고 포스트맨으로 json형식으로 요청을 보내본 결과  "success": true 가 떴다!
 
-To use this application, 
-
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
-
-If you have problem, feel free to ask me ^^ 
-
-You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
-
-
+![image](https://user-images.githubusercontent.com/76252074/121795506-84a63d00-cc4c-11eb-99d8-909779bca473.png)
