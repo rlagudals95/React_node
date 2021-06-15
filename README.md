@@ -10,3 +10,6 @@ bcrypt를 사용해 유저의 패스워드를 암호화해 저장했다!
 
 ![image](https://user-images.githubusercontent.com/76252074/121849514-61e85700-cd26-11eb-9ba3-debb99fa2bcc.png)
 
+토큰을 지우고 로그아웃 처리 성공!
+
+![image](https://user-images.githubusercontent.com/76252074/121997708-bb638b00-cde5-11eb-89d7-824d867c8d38.png)
