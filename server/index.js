@@ -1,4 +1,5 @@
 //백엔드의 시작점
+//시작과 끝 같다 여기서 신호를 받고 여러 미들웨어, 스키마 등을 따로 만들어줘 클라이언트에 res값을 돌려준다
 //터미널에 node index.js로 테스트 할 수 있다
 const express = require("express"); //npm installexpress로 설치해 리액트 처럼 import
 const bodyParser = require("body-parser");
@@ -7,10 +8,10 @@ const app = express();
 
 const mongoose = require("mongoose"); //npm install mongoose --save
 const { User } = require("./models/User"); //회원가입시 필요한 유저 모델형식 가져온다
+const { auth } = require("./middleware/auth");
 const config = require("./config/key");
 // bodyParser에 옵션을 줘야한다
 // 클라리언트에서 오는 정보를 일기 위함
-
 //application/x-www-form-0urlencoded 같은 형식을 읽기 위함
 app.use(bodyParser.urlencoded({ extended: true }));
 //application/json 타입을 분석해서 가져올 수 있게함
@@ -98,6 +99,21 @@ app.post("/api/users/login", (req, res) => {
     // 비밀번호가 일치한다면 token생성!
   });
 });
+
+app.post("api/users/auth", auth, (req, res) => {
+  // 콜백을 실행하기 전에 중간에 auth 미들웨어 실행
+  // 여기까지 auth 미들웨어를 통과해왔다는 얘기는 Auth이 true라는 말이다!
+  res.status(200).json({
+    _id: req.user._id, // auth에서 req에 user를 넣었기 때문에 불러올 수 있다
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image,
+  });
+});
+
 const port = process.env.PORT || 5000;
 
 // 5000포트가 기본이다

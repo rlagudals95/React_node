@@ -94,6 +94,9 @@ userSchema.method.generateToken = function (cb) {
   });
 };
 
+
+
+
 //스키마를 모델로 감싸준다 ('모델이름',스키마)
 const User = mongoose.model("User", userSchema);
 
