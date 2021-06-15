@@ -95,12 +95,11 @@ app.post("/api/users/login", (req, res) => {
           .json({ loginSuccess: true, userId: user._id });
       });
     });
-
     // 비밀번호가 일치한다면 token생성!
   });
 });
 
-app.post("api/users/auth", auth, (req, res) => {
+app.post("/api/users/auth", auth, (req, res) => {
   // 콜백을 실행하기 전에 중간에 auth 미들웨어 실행
   // 여기까지 auth 미들웨어를 통과해왔다는 얘기는 Auth이 true라는 말이다!
   res.status(200).json({
@@ -108,11 +107,34 @@ app.post("api/users/auth", auth, (req, res) => {
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
     name: req.user.name,
+    email: req.user.email,
     lastname: req.user.lastname,
     role: req.user.role,
     image: req.user.image,
   });
 });
+
+//로그아웃
+
+app.get("/api/users/logout", auth, (req, res) => {
+  // console.log('req.user', req.user)
+  User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).send({
+      success: true,
+    });
+  });
+});
+
+// app.get("/api/users/logout", auth, (req, res) => {
+//   User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
+//     //찾아서 업데이트 : 토큰을 워준다
+//     if (err) return res.json({ success: false, err });
+//     return res.status(200).send({
+//       success: true,
+//     });
+//   });
+// });
 
 const port = process.env.PORT || 5000;
 
