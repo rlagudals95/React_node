@@ -1,18 +1,15 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
+회원가입 모델을 완성하고 포스트맨으로 json형식으로 요청을 보내본 결과  "success": true 가 떴다!
 
-To use this application, 
+![image](https://user-images.githubusercontent.com/76252074/121795506-84a63d00-cc4c-11eb-99d8-909779bca473.png)
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
+bcrypt를 사용해 유저의 패스워드를 암호화해 저장했다!
 
+![image](https://user-images.githubusercontent.com/76252074/121843833-f5695a00-cd1d-11eb-8197-23a18ca35634.png)
 
-If you have problem, feel free to ask me ^^ 
+저장된 데이터로 로그인을하고 토큰을 발급 받았다!
 
-You can watch the tutorial for this app.
+![image](https://user-images.githubusercontent.com/76252074/121849514-61e85700-cd26-11eb-9ba3-debb99fa2bcc.png)
 
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
+토큰을 지우고 로그아웃 처리 성공!
 
-
+![image](https://user-images.githubusercontent.com/76252074/121997708-bb638b00-cde5-11eb-89d7-824d867c8d38.png)
